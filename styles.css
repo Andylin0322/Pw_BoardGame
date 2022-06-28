@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  margin-top: 50px;
+}
+
+h1,h2 {
+  font-family: "Montserrat";
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+h2 {
+  font-size: 1.5vw;
+}
+
+button {
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  text-align: center;
+  font-size: 1.5vw;
+  padding: 1vw;
+  width: 30vw;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.player {
+  width: 2.25vw;
+  height: 2.25vw;
+  z-index: 10;
+}
+
+.dsquare {
+  background-color: #A2D5AB;
+  width: 4.5vw;
+  height: 4.5vw;
+  float: left;
+  text-align: center;
+
+  line-height: 2.5vw;
+}
+
+.lsquare {
+  background-color: #E5EFC1;
+  width: 4.5vw;
+  height: 4.5vw;
+  float: left;
+  text-align: center;
+  line-height: 2.5vw;
+}
+
+#board {
+  margin-left: 7vw;
+  width: 45vw;
+  background-color: #E5EFC1;
+  overflow: auto;
+  float: left;
+}
+
+#questions {
+  float: left;
+  text-align: center;
+  width: 40vw;
+  padding-left: 5vw;
+}
+
+.red {
+  background-color: #EB5353;
+}
+
+.red:hover {
+  background-color: #FF6B6B;
+}
+
+.red:active {
+  background-color: #E78EA9;
+}
+
+.yellow {
+  background-color: #F9D923;
+}
+
+.yellow:hover {
+  background-color: #FFD93D;
+}
+.yellow:active {
+  background-color: #FFFBE7;
+}
+
+.green {
+  background-color: #36AE7C;
+}
+
+.green:hover {
+  background-color: #6BCB77;
+}
+
+.green:active {
+  background-color: #B9F8D3;
+}
+
+.blue {
+  background-color: #1363DF;
+}
+
+.blue:hover {
+  background-color: #4D96FF;
+}
+
+.blue:active {
+  background-color: #40DFEF;
+}
