@@ -54,6 +54,7 @@ button {
 }
 
 #board {
+  position: relative;
   margin-left: 7vw;
   width: 45vw;
   background-color: #E5EFC1;
@@ -62,6 +63,7 @@ button {
 }
 
 #questions {
+  position: relative;
   float: left;
   text-align: center;
   width: 40vw;
@@ -113,4 +115,27 @@ button {
 
 .blue:active {
   background-color: #40DFEF;
+}
+
+#winner {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  border-radius: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #59CE8F;
+  z-index: 10;
+  padding: 2vw;
+}
+
+#winner h1 {
+  font-size: 50vw;
+  margin-top: auto;
+  margin-bottom: auto;
 }

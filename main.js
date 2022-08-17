@@ -237,33 +237,41 @@ let button2 =  document.getElementById("opt2");
 let button3 =  document.getElementById("opt3");
 optButtons = [button1,button2,button3];
 buttonColors = ["red", "blue", "green", "yellow"];
+prev_q = [0,1,2,3,4,5,6,7,8,9];
 
 const newQuestion = () => {
-  currentQ = Math.floor(Math.random()*29);
+  var step = 0;
+  currentQ = Math.floor(Math.random()*39);
+  while(currentQ in prev_q){
+    if(step>100){
+      break;
+    }
+    currentQ = Math.floor(Math.random()*39);
+    step++;
+  }
+  prev_q.push(currentQ);
+  console.log(prev_q[0]);
+  console.log(prev_q[1]);
+  if(prev_q.length>10){
+    prev_q.shift();
+  }
+
   qTag = document.getElementById("questionTag");
   qTag.innerHTML = Quizdata[currentQ].questions;
   const usedColors = [];
   var choice = 0;
   for(let i=0;i<3;i++){
     choice = Math.floor(Math.random()*4);
-    var step = 0;
     while(usedColors.indexOf(choice)!==-1){
-      console.log("choice: "+choice);
       choice = Math.floor(Math.random()*4);
     }
-    console.log(choice);
     usedColors.push(choice);
-    for(let i=0;i<usedColors.length;i++){
-      console.log("list " + i+" "+usedColors[i]);
-    }
     optButtons[i].className = buttonColors[choice];
-    console.log(choice);
     optButtons[i].innerHTML = Quizdata[currentQ].options[i];
   }
 }
 
 const check = (choice) => {
-  console.log(choice);
   for(let i=0;i<3;i++){
     if(i==Quizdata[currentQ].ans){
       optButtons[i].className = buttonColors[2];
@@ -297,6 +305,15 @@ class Pawn {
     document.getElementById('board').appendChild(this.piece);
   }
 
+  win() {
+    console.log("won");
+    let end_board = document.getElementById('winner');
+    let game_end = document.getElementById('winner_t');
+    end_board.style.display = "block";
+    end_board.style.visibility = "visible";
+    game_end.innerHTML = this.pName + " Won!"
+  }
+
   set_pos() {
     this.piece.style.top = ((Math.floor((100 - this.squareIndex) / 10) * 4.5) + this.ydis) + "vw";
     this.xpos = this.squareIndex;
@@ -320,10 +337,12 @@ class Pawn {
     var status = document.getElementById("status");
     if (mistake==false) {
       this.squareIndex += move;
-      if (this.squareIndex >= 100) {
-        this.squareIndex = 100;
-      }
       this.set_pos();
+    }
+
+    if (this.squareIndex >= 100) {
+      this.squareIndex = 100;
+      this.win();
     }
     if(this.pName=="Green"){
       setTimeout(function() {status.innerHTML = "Yellow is making a move..."}, 0);
@@ -340,7 +359,7 @@ class Pawn {
     document.getElementById("opt1").setAttribute('disabled', 'disabled');
     document.getElementById("opt2").setAttribute('disabled', 'disabled');
     document.getElementById("opt3").setAttribute('disabled', 'disabled');
-    this.make_move(Math.floor(Math.random() * 6) + 1, pMistake);
+    this.make_move(Math.floor(Math.random() * 5) + 1, pMistake);
 
 
     const times = [1000 + Math.random() * 4, 1000 * 2 + Math.random() * 4, 1000 * 3 + Math.random() * 4];
